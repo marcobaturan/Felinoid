@@ -207,3 +207,5 @@ Visceral SDR(glucose, adenosine, tactile), level 0.9999999999999999;  [99, 100, 
 
 Process finished with exit code 0
 
+https://github.com/htm-community/htm.core/wiki/Sparse-Distributed-Representations
+https://github.com/htm-community/htm.core/blob/master/py/htm/examples/hotgym.py#L73

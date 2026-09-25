@@ -17,33 +17,33 @@ if __name__ == '__main__':
     params.minimum = null  # Null pressure
     params.maximum = max_pres  # max pressure
     params.activeBits = w # Ancho de la ventana (bits encendidos 'w')
-    numbers = [24, 30, 40, 50]  # 50 ES EL GANADOR EN CUANTO A SOLAPAMIENTO DE CODIFICADORES DE PRESIÓN.
+    number = 50 # 50 ES EL GANADOR EN CUANTO A SOLAPAMIENTO DE CODIFICADORES DE PRESIÓN.
 
-    for number in numbers:
-        params.size = number
 
-        # start encoder with params
-        encoder = ScalarEncoder(params)
+    params.size = number
 
-        # encode 4 values of back pressure point
-        sdr_one = encoder.encode(0.0)   # minimal back pressure
-        sdr_two = encoder.encode(0.2)   # middel pressure
-        sdr_three = encoder.encode(0.6) # high pressure
-        sdr_four = encoder.encode(1.0)  # max level
+    # start encoder with params
+    encoder = ScalarEncoder(params)
 
-        # print the internal representation
-        print("=====================================================================")
-        print(f"for size of {number} bits.")
-        print("Position for value 0.0: ", sdr_one.sparse)
-        print("Position for value 0.2: ", sdr_two.sparse)
-        print("Position for value 0.6: ", sdr_three.sparse)
-        print("Position for value 1.0: ", sdr_four.sparse)
-        print("=====================================================================")
-        lista = sdr_one.sparse.tolist()
-        listb = sdr_two.sparse.tolist()
-        listc = sdr_three.sparse.tolist()
-        listd = sdr_four.sparse.tolist()
+    # encode 4 values of back pressure point
+    sdr_one = encoder.encode(0.0)   # minimal back pressure
+    sdr_two = encoder.encode(0.2)   # middel pressure
+    sdr_three = encoder.encode(0.6) # high pressure
+    sdr_four = encoder.encode(1.0)  # max level
 
-        overlap_inform(lista,listb,listc,listd,w=w)
-        print("=====================================================================")
+    # print the internal representation
+    print("=====================================================================")
+    print(f"for size of {number} bits.")
+    print("Position for value 0.0: ", sdr_one.sparse)
+    print("Position for value 0.2: ", sdr_two.sparse)
+    print("Position for value 0.6: ", sdr_three.sparse)
+    print("Position for value 1.0: ", sdr_four.sparse)
+    print("=====================================================================")
+    lista = sdr_one.sparse.tolist()
+    listb = sdr_two.sparse.tolist()
+    listc = sdr_three.sparse.tolist()
+    listd = sdr_four.sparse.tolist()
+
+    overlap_inform(lista,listb,listc,listd,w=w)
+    print("=====================================================================")
         

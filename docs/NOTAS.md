@@ -117,4 +117,67 @@ Decisión razonable — la justificación (percepción táctil fina) es coherent
 - Se completa el codificador de escala para azucar y adenosina, se actualiza el contrato de interface fase 1, se ponen las razones y hechos.
 - Se ajusta los buckes de adenosine a granularidad fina y distribución amplia.
 - Nota deuna conversación de peloteo: Working in Felinoid make me strong conscious about a big problem about the arc percepción-conception. E.g: Now I'm working in connect glucose levels sensor, from 0.0 to 1.0 with five label for levels, to encoder to produce proper SDR. I will use my tool for measuring of overlap memory patterns between layers of HTM column. Meanwhile touch is a continuous perception with high discrimination the levels of sugar/hunger is different; because one can have relative middle to low suggar and ignore the pain in the stomach. And all animal not only eat when they have hunger for very low sugar, they need a trigger (sound of bottle, for example) in humans is smell, or watch a big letter of McDonald's. but in this phase it's only a chemical sensor connected to encoder to produce SDR in HTM.
-- 
+
+## Resumen de sesión - 25 de septiembre de 2026
+
+### Almaceno en NOTAS.md de ejemplo de test de SDR
+
+Este tipo de estructura permite analizar la codificación de los valores provenientes de los sensores a los codificadores
+que lo convierten en representaciones distribuidas escasas para detectar el solapamiento entre patrones de activación
+entre instancias de tiempo para que haya continuidad semantica y aprendizaje de percepciones.
+  
+```Python
+# Import a library after read docs
+from htm.bindings.encoders import ScalarEncoder, ScalarEncoderParameters
+from utils.inform_tool import overlap_inform
+
+# variables
+null_glucose = 0.0
+max_glucose = 1.0
+w = 21
+
+
+if __name__ == '__main__':
+    params = ScalarEncoderParameters()
+    params.minimum = null_glucose     # minimum glucose
+    params.maximum = max_glucose      # maximum glucose
+    params.activeBits = w             # with of window activation bits
+    numbers = [100,105,110,112]       # 112 ES EL GANADOR EN CUANTO A SOLAPAMIENTO DE CODIFICADORES DE GLUCOSA.
+
+    for number in numbers:
+        params.size = number
+
+        # start encoder with params
+        encoder = ScalarEncoder(params)
+        # encode 4 values of back pressure point
+        sdr_one = encoder.encode(0.0)    # critic
+        sdr_two = encoder.encode(0.2)    # strong hunger
+        sdr_three = encoder.encode(0.4)  # soft hunger
+        sdr_four = encoder.encode(0.6)   # normal
+        sdr_five = encoder.encode(0.8)   # near full
+        sdr_six  = encoder.encode(1.0)   # full
+
+
+        # print the internal representation
+        print("=====================================================================")
+        print(f"for size of {number} bits.")
+        print("Position for value 0.0: ", sdr_one.sparse)
+        print("Position for value 0.2: ", sdr_two.sparse)
+        print("Position for value 0.4: ", sdr_three.sparse)
+        print("Position for value 0.6: ", sdr_four.sparse)
+        print("Position for value 0.8: ", sdr_five.sparse)
+        print("Position for value 1.0: ", sdr_six.sparse)
+        print("=====================================================================")
+        one = sdr_one.sparse.tolist()
+        two = sdr_two.sparse.tolist()
+        three = sdr_three.sparse.tolist()
+        four = sdr_four.sparse.tolist()
+        five = sdr_five.sparse.tolist()
+        six = sdr_six.sparse.tolist()
+
+
+        overlap_inform(one, two, three, four, five,six, w=w)
+        print("=====================================================================")
+
+```
+

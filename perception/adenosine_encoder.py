@@ -1,14 +1,12 @@
 # Import a library after read docs
 from htm.bindings.encoders import ScalarEncoder, ScalarEncoderParameters
 
-# variables
-null_adenosine = 0.0
-max_adenosine = 1.0
-w = 21
 
-
-if __name__ == '__main__':
+def encode_adenosine():
     # variables
+    null_adenosine = 0.0
+    max_adenosine = 1.0
+    w = 21
     params = ScalarEncoderParameters()
     params.minimum = null_adenosine     # minimum adenosine
     params.maximum = max_adenosine      # maximum adenosine
@@ -32,6 +30,7 @@ if __name__ == '__main__':
     sdr_ten = encoder.encode(1.0)
 
     # Representations
+    zero= sdr_zero.sparse.tolist()
     one = sdr_one.sparse.tolist()
     two = sdr_two.sparse.tolist()
     three = sdr_three.sparse.tolist()

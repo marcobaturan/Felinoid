@@ -1,14 +1,12 @@
 # Import a library after read docs
 from htm.bindings.encoders import ScalarEncoder, ScalarEncoderParameters
 
-# variables
-null_glucose = 0.0
-max_glucose = 1.0
-w = 21
 
-
-if __name__ == '__main__':
-    # Variables
+def encode_glucose():
+    # variables
+    null_glucose = 0.0
+    max_glucose = 1.0
+    w = 21
     params = ScalarEncoderParameters()
     params.minimum = null_glucose     # minimum glucose
     params.maximum = max_glucose      # maximum glucose
@@ -25,6 +23,7 @@ if __name__ == '__main__':
     sdr_four = encoder.encode(0.6)   # normal
     sdr_five = encoder.encode(0.8)   # near full
     sdr_six  = encoder.encode(1.0)   # full
+
     # SDR produce list of vector.
     one = sdr_one.sparse.tolist()
     two = sdr_two.sparse.tolist()

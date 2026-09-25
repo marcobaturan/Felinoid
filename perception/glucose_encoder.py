@@ -1,6 +1,5 @@
 # Import a library after read docs
 from htm.bindings.encoders import ScalarEncoder, ScalarEncoderParameters
-from utils.inform_tool import overlap_inform
 
 # variables
 null_glucose = 0.0
@@ -9,13 +8,12 @@ w = 21
 
 
 if __name__ == '__main__':
+    # Variables
     params = ScalarEncoderParameters()
     params.minimum = null_glucose     # minimum glucose
     params.maximum = max_glucose      # maximum glucose
     params.activeBits = w             # with of window activation bits
-    number = 112 # 112 ES EL GANADOR EN CUANTO A SOLAPAMIENTO DE CODIFICADORES DE GLUCOSA.
-
-
+    number = 112                      # 112 IS THE BEST VALUE AFTER PASS UTILS/INFORM_OVERLAP FUNCTION
     params.size = number
 
     # start encoder with params
@@ -27,25 +25,10 @@ if __name__ == '__main__':
     sdr_four = encoder.encode(0.6)   # normal
     sdr_five = encoder.encode(0.8)   # near full
     sdr_six  = encoder.encode(1.0)   # full
-
-
-    # print the internal representation
-    print("=====================================================================")
-    print(f"for size of {number} bits.")
-    print("Position for value 0.0: ", sdr_one.sparse)
-    print("Position for value 0.2: ", sdr_two.sparse)
-    print("Position for value 0.4: ", sdr_three.sparse)
-    print("Position for value 0.6: ", sdr_four.sparse)
-    print("Position for value 0.8: ", sdr_five.sparse)
-    print("Position for value 1.0: ", sdr_six.sparse)
-    print("=====================================================================")
+    # SDR produce list of vector.
     one = sdr_one.sparse.tolist()
     two = sdr_two.sparse.tolist()
     three = sdr_three.sparse.tolist()
     four = sdr_four.sparse.tolist()
     five = sdr_five.sparse.tolist()
     six = sdr_six.sparse.tolist()
-
-
-    overlap_inform(one, two, three, four, five,six, w=w)
-    print("=====================================================================")

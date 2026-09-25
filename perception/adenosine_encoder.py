@@ -1,6 +1,5 @@
 # Import a library after read docs
 from htm.bindings.encoders import ScalarEncoder, ScalarEncoderParameters
-from utils.inform_tool import overlap_inform
 
 # variables
 null_adenosine = 0.0
@@ -9,17 +8,16 @@ w = 21
 
 
 if __name__ == '__main__':
+    # variables
     params = ScalarEncoderParameters()
     params.minimum = null_adenosine     # minimum adenosine
     params.maximum = max_adenosine      # maximum adenosine
     params.activeBits = w               # with of window activation bits
-    number = 120 # 120 ES EL GANADOR EN CUANTO A SOLAPAMIENTO DE CODIFICADORES DE GLUCOSA
-
-
+    number = 120                        # 120 IS THE BEST VALUE AFTER PASS UTILS/INFORM_OVERLAP FUNCTION
     params.size = number
-
     # start encoder with params
     encoder = ScalarEncoder(params)
+
     # encode 4 values of back pressure point
     sdr_zero = encoder.encode(0.0)
     sdr_one = encoder.encode(0.1)
@@ -33,22 +31,7 @@ if __name__ == '__main__':
     sdr_nine = encoder.encode(0.9)
     sdr_ten = encoder.encode(1.0)
 
-
-    # print the internal representation
-    print("=====================================================================")
-    print(f"for size of {number} bits.")
-    print("Position for value 0.0: ", sdr_zero.sparse)
-    print("Position for value 0.1: ", sdr_one.sparse)
-    print("Position for value 0.2: ", sdr_two.sparse)
-    print("Position for value 0.3: ", sdr_three.sparse)
-    print("Position for value 0.4: ", sdr_four.sparse)
-    print("Position for value 0.5: ", sdr_five.sparse)
-    print("Position for value 0.6: ", sdr_six.sparse)
-    print("Position for value 0.7: ", sdr_seven.sparse)
-    print("Position for value 0.8: ", sdr_eight.sparse)
-    print("Position for value 0.9: ", sdr_nine.sparse)
-    print("Position for value 1.0: ", sdr_ten.sparse)
-    print("=====================================================================")
+    # Representations
     one = sdr_one.sparse.tolist()
     two = sdr_two.sparse.tolist()
     three = sdr_three.sparse.tolist()
@@ -59,7 +42,3 @@ if __name__ == '__main__':
     eight = sdr_eight.sparse.tolist()
     nine = sdr_nine.sparse.tolist()
     ten = sdr_ten.sparse.tolist()
-
-
-    overlap_inform(one, two, three, four, five, six, seven, eight, nine, ten, w=w)
-    print("=====================================================================")

@@ -6,30 +6,28 @@ from glucose import GlucoseState
 from perception.VisceralSDR_F1 import VisceralSDRF1
 
 
-# Defino una dataclase mutable para el estado visceral (inicialmente dos parámetros)
+# I define a mutable dataclass for the visceral state (initially two parameters)
 @dataclass()
 class VisceralStateF1:
     adenosine: AdenosineState
     glucose: GlucoseState
 
-# Instanciamos la dataclase con parametrizacion de los estados de adenosina y glucosa iniciados en sus valores de inicio
+# We instantiate the dataclass with parameterization of the adenosine and glucose states started at their starting values
 visceral_state = VisceralStateF1(adenosine=AdenosineState(level=0.0), glucose= GlucoseState(level=1.0))
 
 class ChangeVisceralState:
     """Change Visceral State
 
-        Es la clase a instancias para iterar en el tiempo para producir un cambio en los estados viscerales
-        los cuales serán los estimulos internos del organismo para condicionar el cerebro del organismo y
-        producir estados internos y somáticos.
+        EIt is the class at instances to iterate over time to produce a change in the visceral states which will be
+        the internal stimuli of the organism to condition the brain of the organism and produce internal
+        and somatic states.
     """
     def __init__(self):
         self.actual_glucose_state = visceral_state.glucose
         self.actual_adenosine_state = visceral_state.adenosine
 
     def glucose_change(self):
-        # mecanismo de decaida de glucosa en la dimensión del tiempo según un reloj interno
-        # Inicialmente en decima de segundo.
-        # produce hambre
+        # glucose decay mechanism in the dimension of time according to an internal clock
         if self.actual_glucose_state.level > 0.0:
             new_level_glucose = round(self.actual_glucose_state.level - 0.1, 1)
             self.actual_glucose_state.level = new_level_glucose
@@ -40,9 +38,8 @@ class ChangeVisceralState:
             print("Food")
 
     def adenosine_change(self):
-        # mecanismo de subida de adenosina en la dimensión del tiempo según un reloj interno
-        # Inicialmente en decima de segundo.
-        # produce sueño
+        # adenosine decay mechanism in the dimension of time according to an internal clock
+
         if self.actual_adenosine_state.level < 1.0:
             new_level_adenosine = round(self.actual_adenosine_state.level + 0.1, 1)
             self.actual_adenosine_state.level = new_level_adenosine
@@ -53,13 +50,12 @@ class ChangeVisceralState:
             print("REM")
 
 
-# instancia del mecanismo de estado visceral en la dimensión del tiempo
 change_visceral_state = ChangeVisceralState()
 
 if __name__ == '__main__':
     try:
-        while True: # Mientras no se invoque un comando de salida por teclado la misma instancia induce un cambio en
-            # ambas variables.
+        while True: # As long as a keyboard output command is not invoked, the same instance induces a change in
+
             change_visceral_state.glucose_change()
             change_visceral_state.adenosine_change()
             sdr = VisceralSDRF1(glucose_value = change_visceral_state.actual_glucose_state.level, adenosine_value=change_visceral_state.actual_adenosine_state.level)

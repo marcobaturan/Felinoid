@@ -218,3 +218,15 @@ https://github.com/htm-community/htm.core/blob/master/py/htm/examples/hotgym.py#
     #         time.sleep(1.0)
     # except KeyboardInterrupt:
     #     print("\n Simulation stopped.")
+
+
+Correcto en su totalidad. El comportamiento es exactamente el esperado:
+
+- Glucosa decae de 0.9 a 0.0 mientras el rango de índices se desplaza consistentemente hacia posiciones más bajas (82→0), coherente con la dirección inversa del encoder.
+- Adenosina sube de 0.1 a 1.0 mientras su rango se desplaza hacia arriba (122→211+), consistente también.
+- Al llegar a los extremos (glucosa 0.0 / adenosina 1.0), "Food" y "REM" se disparan de forma continua, tal como diseñaste, y el SDR se estabiliza correctamente en el mismo valor final (0-20 + 211-231) porque ambas variables ya tocaron su límite y no siguen cambiando — coherente, no es un bug.
+
+## Ciclo visceral-cognitivo cerrado
+
+Con esto tienes el flujo completo funcionando de punta a punta: cuerpo simbólico (Fase 1) → codificación sensorial en SDR concatenado (Fase 2) → verificación empírica del comportamiento dinámico tick a tick. Es un hito real del proyecto, no solo otro script suelto.Queda pendiente decidir el siguiente paso: integrar `back_pressure` al mismo flujo (aunque sea con un valor simulado manualmente, ya que no hay sensor real todavía), o avanzar a Fase 3 (memoria temporal con `htm.core`, consumiendo por fin el SDR que hasta ahora solo se calcula e imprime sin propósito posterior). ¿Cuál prefieres?
+LUNES: Decisión anotada. Fase 3 requiere estudiar primero la API de `SpatialPooler` y/o `TemporalMemory` de `htm.core` (el SDR concatenado de 232 bits que ya tienes será su entrada) antes de escribir código — mismo procedimiento que seguiste con `ScalarEncoder`: lee la documentación, tráeme tu resumen de qué parámetros existen y qué entiendes que necesitas configurar, y lo verifico antes de que toques código.

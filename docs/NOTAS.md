@@ -184,3 +184,9 @@ if __name__ == '__main__':
 REGLA: cuando desarrolles e investigues puedes expandir los pasos de algoritmo y las estructuras de datos en sucio
 pero despues tienes que retirar todo fleco de código pendiente que no sea exclusivamente para el objetivo. No dejar
 estructuras pendientes,redundantas o sin llamar. Código limpio, legible y minimalista.
+
+Tras revisar las notas y apuntes contra la documentación logré crear un SDR de almacenamiento dimensional de 282 bits
+para integrar los tres SDR y luego convertirlo en una lista. El valor varia en el tiempo en base a un incremento de
+una decima por segundo. Genera diez llamadas de instancias en diez segundos con un SDR integrado diferente cada vez.
+Puedo usar el informe de solapamiento para medir el grado de conexión entre tres areas diferentes para codificar 
+neurológicamente el aprendizaje operante.

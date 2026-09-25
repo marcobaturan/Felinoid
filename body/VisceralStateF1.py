@@ -3,6 +3,8 @@ from dataclasses import dataclass
 import time
 from adenosine import AdenosineState
 from glucose import GlucoseState
+from perception.VisceralSDR_F1 import VisceralSDRF1
+
 
 # Defino una dataclase mutable para el estado visceral (inicialmente dos parámetros)
 @dataclass()
@@ -49,6 +51,8 @@ class ChangeVisceralState:
 
         if self.actual_adenosine_state.level == 1.0:
             print("REM")
+
+
 # instancia del mecanismo de estado visceral en la dimensión del tiempo
 change_visceral_state = ChangeVisceralState()
 
@@ -58,6 +62,8 @@ if __name__ == '__main__':
             # ambas variables.
             change_visceral_state.glucose_change()
             change_visceral_state.adenosine_change()
+            sdr = VisceralSDRF1(glucose_value = change_visceral_state.actual_glucose_state.level, adenosine_value=change_visceral_state.actual_adenosine_state.level)
+            print("Visceral SDR state: ", sdr)
             time.sleep(0.1)
     except KeyboardInterrupt:
         print("\n Simulation stopped.")

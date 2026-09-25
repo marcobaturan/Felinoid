@@ -209,3 +209,12 @@ Process finished with exit code 0
 
 https://github.com/htm-community/htm.core/wiki/Sparse-Distributed-Representations
 https://github.com/htm-community/htm.core/blob/master/py/htm/examples/hotgym.py#L73
+
+    # try:
+    #     while level < 1.0: # run until reach the end or receive Ctrl + C
+    #         # result of integration coding
+    #         print(f"Visceral SDR(glucose, adenosine, tactile), level {level}; ", VisceralSDRF1(value=level))
+    #         level += 0.1
+    #         time.sleep(1.0)
+    # except KeyboardInterrupt:
+    #     print("\n Simulation stopped.")

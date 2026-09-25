@@ -16,4 +16,4 @@ encoder = ScalarEncoder(params) # start encoder with params
 
 def encode_tactile(value: float) -> list[int]:
     # SDR produce list of vector.
-    return encoder.encode(value).sparse.tolist()
+    return encoder.encode(value)

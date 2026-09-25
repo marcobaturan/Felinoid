@@ -181,3 +181,6 @@ if __name__ == '__main__':
 
 ```
 
+REGLA: cuando desarrolles e investigues puedes expandir los pasos de algoritmo y las estructuras de datos en sucio
+pero despues tienes que retirar todo fleco de código pendiente que no sea exclusivamente para el objetivo. No dejar
+estructuras pendientes,redundantas o sin llamar. Código limpio, legible y minimalista.

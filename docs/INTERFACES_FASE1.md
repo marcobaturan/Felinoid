@@ -99,8 +99,7 @@ The output format strictly complies with the C++ requirement of `htm.core`: an i
 @dataclass(frozen=True)
 class SpatialRepresentationF1:
     dimensions: Tuple[int] = (50,)
-    sparse_indices: List[int]  # Sorted list of exactly 21 integers (positions of the bits set to 1)
-
+    sparse_indices: SDR() # docs (hotgym example) show work with SDR is optimal and only converse to list in the final step.
 ```
 
 ---

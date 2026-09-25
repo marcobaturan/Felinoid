@@ -1,0 +1,18 @@
+build==1.6.1
+certifi==2026.7.22
+charset-normalizer==3.5.1
+Hexy==1.4.4
+htm @ file:///home/marco/Projects/Felinoid/htm.core/dist/htm-2.2.0-cp311-cp311-linux_x86_64.whl#sha256=202669a044bb7e74257bd0ee7e46ea8392b60a521591984d440789ea1d4eabfb
+idna==3.19
+iniconfig==2.3.0
+numpy==2.4.6
+packaging==26.3
+pluggy==1.6.0
+prettytable==3.18.0
+pybind11==3.1.0
+Pygments==2.21.0
+pyproject_hooks==1.2.0
+pytest==9.1.1
+requests==2.34.2
+urllib3==2.7.0
+wcwidth==0.8.3

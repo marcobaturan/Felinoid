@@ -54,8 +54,8 @@ if __name__ == '__main__':
             change_visceral_state.adenosine_change()
             response = encode_memory(adenosine=change_visceral_state.actual_adenosine_state.level,
                           glucose= change_visceral_state.actual_glucose_state.level)
-
             time.sleep(0.1)
+
     except KeyboardInterrupt:
         print("\n Simulation stopped.")
         print('active_columns', response['active_columns'])

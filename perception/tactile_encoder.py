@@ -1,4 +1,5 @@
-# Import a library after read docs
+__doc__="""Codify the external input of machine state for tactile parameter to produce a list."""
+
 from htm.bindings.encoders import ScalarEncoder, ScalarEncoderParameters
 
 

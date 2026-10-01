@@ -61,7 +61,7 @@ def encode_memory(adenosine: float, glucose: float) -> dict:
         tmInputSDR.sparse = encode_spatial(adenosine=adenosine, glucose=glucose)
         tm.compute(tmInputSDR, learn=True)
         return {
-                "active_columns": tm.getActiveCells().sparse.tolist(),
+                "active_cells": tm.getActiveCells().sparse.tolist(),
                 "anomaly": tm.anomaly,
                 "tm": tm,
         }

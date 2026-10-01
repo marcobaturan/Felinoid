@@ -1,4 +1,4 @@
-# Import a library after read docs
+__doc__="""Codify the internal input of machine state for glucose parameter to produce a list."""
 from htm.bindings.encoders import ScalarEncoder, ScalarEncoderParameters
 
 

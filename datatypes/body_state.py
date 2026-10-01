@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from body.adenosine import AdenosineState
-from body.glucose import GlucoseState
+from datatypes.adenosine import AdenosineState
+from datatypes.glucose import GlucoseState
 
 # I define a mutable dataclass for the visceral state (initially two parameters)
 @dataclass()

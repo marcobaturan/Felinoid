@@ -1,8 +1,11 @@
-# importamos los módulos propios y creados de las dataclases de glucosa y adenosina.
+__doc__ = """This module codify the complete cycle from sensor in visceral state machine,
+passing by encoder-> SDR -> SP-> TM to simulate inner state perception and learning.
+"""
+
 import time
-from adenosine import AdenosineState
-from datatypes.datatypes import VisceralStateF1
-from glucose import GlucoseState
+from datatypes.adenosine import AdenosineState
+from datatypes.body_state import VisceralStateF1
+from datatypes.glucose import GlucoseState
 from memory.htm_pipeline import encode_memory
 from utils.inform_tool import printStateTM
 
@@ -52,13 +55,13 @@ if __name__ == '__main__':
         while True: # As long as a keyboard output command is not invoked, the same instance induces a change in
             change_visceral_state.glucose_change()
             change_visceral_state.adenosine_change()
-            response = encode_memory(adenosine=change_visceral_state.actual_adenosine_state.level,
+            results = encode_memory(adenosine=change_visceral_state.actual_adenosine_state.level,
                           glucose= change_visceral_state.actual_glucose_state.level)
             time.sleep(0.1)
 
     except KeyboardInterrupt:
         print("\n Simulation stopped.")
-        print('active_columns', response['active_columns'])
-        print('anomaly', response['anomaly'])
+        print('Active cells:', results['active_cells'])
+        print('Anomaly:', results['anomaly'])
         print('Show tm state:')
-        printStateTM(response['tm'])
+        printStateTM(results['tm'])

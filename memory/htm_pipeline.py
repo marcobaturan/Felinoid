@@ -10,7 +10,7 @@ from htm.bindings.sdr import SDR
 from htm.algorithms import SpatialPooler as SP
 from htm.algorithms import TemporalMemory as TM
 from perception.VisceralSDR_F1 import VisceralSDRF1
-import time
+
 
 # variables
 sparse_list = []

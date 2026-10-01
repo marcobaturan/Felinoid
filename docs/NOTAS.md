@@ -258,3 +258,22 @@ Sobre modelos/ + classModels.py
 Anoto en NOTAS.md para futuro el crear en nuevo contrato de diseño la estructura correspondiente
 ahora no estoy en esa fase. Pero si al final represento muchas estructuras fisiológicas
 entonces tendré que construirlo para tenerlo todo ordenado.
+
+Antes de confirmar que el ciclo está cerrado correctamente, necesito ver el código real de los puntos 0, 1 y 2 — no solo tu descripción de que están hechos. Dijiste que ampliaste `encode_memory` con dos parámetros más en el diccionario, pero no los has mostrado, y el `response['tm']` que usas en `printStateTM(response['tm'])` implica que uno de esos nuevos campos es `'tm'` — confírmalo y enséñame la función completa actualizada.
+
+## Lo que la salida sí confirma, provisionalmente
+
+- El bug del retorno como lista está corregido: ahora `active_columns` es una lista plana de enteros, no el objeto `SDR` con su prefijo textual.
+- El flujo completo corre sin errores: cuerpo → SDR visceral → SP → TM, con los valores reales del estado (no generados a mano), y el ciclo termina correctamente con Ctrl+C, imprimiendo el estado final.
+- `Anomaly: 0.0` al final es razonable — la secuencia pasa buena parte del tiempo repitiendo los mismos valores extremos (los 9 "Food"/"REM" consecutivos antes de que pulsaras Ctrl+C), así que el TM aprende rápidamente ese patrón repetitivo.
+
+## Lo que falta verificar antes de dar esto por cerrado
+
+1. **Código completo de `encode_memory` actualizado** — con los campos nuevos que añadiste, para auditar si tiene sentido lo que decidiste incluir (¿por qué esos dos campos en concreto? ¿qué uso les darás?).
+2. **Confirmación de que `formatBits` y `printStateTM` ya no existen duplicados en ningún otro archivo** — si los moviste a `inform_tool.py`, revisa que `htm_pipeline.py` ya no tenga sus propias copias sueltas (fuente de confusión si quedan ambas versiones coexistiendo).
+3. **La nota TODO que mencionas** — tráela también, para verificar que documenta algo concreto y no es un recordatorio vago que se va a quedar ahí sin acción.
+
+Pega el código actualizado de `htm_pipeline.py` y confirmo si el ciclo completo queda cerrado de verdad.
+
+Decido incluir datatypes/datatypes.py para almacenar las clases de datos para centralizar la
+categoria de datos y facilitar su gestion.

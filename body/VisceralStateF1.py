@@ -1,16 +1,11 @@
 # importamos los módulos propios y creados de las dataclases de glucosa y adenosina.
-from dataclasses import dataclass
 import time
 from adenosine import AdenosineState
+from datatypes.datatypes import VisceralStateF1
 from glucose import GlucoseState
 from memory.htm_pipeline import encode_memory
 from utils.inform_tool import printStateTM
 
-# I define a mutable dataclass for the visceral state (initially two parameters)
-@dataclass()
-class VisceralStateF1:
-    adenosine: AdenosineState
-    glucose: GlucoseState
 
 # We instantiate the dataclass with parameterization of the adenosine and glucose states started at their starting values
 visceral_state = VisceralStateF1(adenosine=AdenosineState(level=0.0), glucose= GlucoseState(level=1.0))

@@ -277,3 +277,8 @@ Pega el código actualizado de `htm_pipeline.py` y confirmo si el ciclo completo
 
 Decido incluir datatypes/datatypes.py para almacenar las clases de datos para centralizar la
 categoria de datos y facilitar su gestion.
+
+Se renombró datatypes a body_state.py para respetar las convenciones. Pendiente debatir si proceder con TDD con IA.
+El lunes se procede a crear todo el ciclo cognitivo para back_pressure, pensar si es arco independiente o no. Probablemente
+es independiente al ser un sentido externo. Investigar el n.º de sentidos en felinos, complementar con lista
+completa en mamíferos.

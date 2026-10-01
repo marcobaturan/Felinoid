@@ -3,8 +3,8 @@ from dataclasses import dataclass
 import time
 from adenosine import AdenosineState
 from glucose import GlucoseState
-from perception.VisceralSDR_F1 import VisceralSDRF1
-
+from memory.htm_pipeline import encode_memory
+from utils.inform_tool import printStateTM
 
 # I define a mutable dataclass for the visceral state (initially two parameters)
 @dataclass()
@@ -50,7 +50,6 @@ class ChangeVisceralState:
         if self.actual_adenosine_state.level == 1.0:
             print("REM")
 
-
 change_visceral_state = ChangeVisceralState()
 
 if __name__ == '__main__':
@@ -58,9 +57,13 @@ if __name__ == '__main__':
         while True: # As long as a keyboard output command is not invoked, the same instance induces a change in
             change_visceral_state.glucose_change()
             change_visceral_state.adenosine_change()
-            sdr = VisceralSDRF1(adenosine_value=change_visceral_state.actual_adenosine_state.level,
-                                glucose_value = change_visceral_state.actual_glucose_state.level)
-            print("Visceral SDR state: ", sdr)
+            response = encode_memory(adenosine=change_visceral_state.actual_adenosine_state.level,
+                          glucose= change_visceral_state.actual_glucose_state.level)
+
             time.sleep(0.1)
     except KeyboardInterrupt:
         print("\n Simulation stopped.")
+        print('active_columns', response['active_columns'])
+        print('anomaly', response['anomaly'])
+        print('Show tm state:')
+        printStateTM(response['tm'])

@@ -237,4 +237,24 @@ Se genera el SP para html_pipeline, se declara un circuito de SP con TM en sigui
 Se implementa un informe de solapamiento y se considera la simulacion plana de un ciclo de diez pasos
 de glucosa y adenosina para medir el procentaje de solapamiento entre patrones espaciales. 
 Se considera a consultar el descoplamiento de los dataclass en una carpeta llamada modelos para 
-importar los modelos y usar KISS/DRY/Responsibility
+importar los modelos y usar KISS/DRY/Responsibility.
+Decidí añadir una linea más al generador de informes para agregar una visión promedio global 
+para mejorar el análisis del investigador de turno.
+Overlap inform:
+The percentage between 0 and 1 SDRs is 19%.
+The percentage between 1 and 2 SDRs is 24%.
+The percentage between 2 and 3 SDRs is 57%.
+The percentage between 3 and 4 SDRs is 29%.
+The percentage between 4 and 5 SDRs is 29%.
+The percentage between 5 and 6 SDRs is 19%.
+The percentage between 6 and 7 SDRs is 33%.
+The percentage between 7 and 8 SDRs is 29%.
+The percentage between 8 and 9 SDRs is 33%.
+The percentage between first and last SDR is 0%.
+The average percentage overlap between patterns is 27.2 %.
+
+Sobre modelos/ + classModels.py
+
+Anoto en NOTAS.md para futuro el crear en nuevo contrato de diseño la estructura correspondiente
+ahora no estoy en esa fase. Pero si al final represento muchas estructuras fisiológicas
+entonces tendré que construirlo para tenerlo todo ordenado.

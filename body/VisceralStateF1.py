@@ -18,9 +18,10 @@ visceral_state = VisceralStateF1(adenosine=AdenosineState(level=0.0), glucose= G
 class ChangeVisceralState:
     """Change Visceral State
 
-        EIt is the class at instances to iterate over time to produce a change in the visceral states which will be
-        the internal stimuli of the organism to condition the brain of the organism and produce internal
+        It is the class of instances to iterate over time to produce a change in the visceral states.
+        Which will be the internal stimuli of the organism to condition the brain of the organism and produce internal
         and somatic states.
+
     """
     def __init__(self):
         self.actual_glucose_state = visceral_state.glucose
@@ -55,10 +56,10 @@ change_visceral_state = ChangeVisceralState()
 if __name__ == '__main__':
     try:
         while True: # As long as a keyboard output command is not invoked, the same instance induces a change in
-
             change_visceral_state.glucose_change()
             change_visceral_state.adenosine_change()
-            sdr = VisceralSDRF1(glucose_value = change_visceral_state.actual_glucose_state.level, adenosine_value=change_visceral_state.actual_adenosine_state.level)
+            sdr = VisceralSDRF1(adenosine_value=change_visceral_state.actual_adenosine_state.level,
+                                glucose_value = change_visceral_state.actual_glucose_state.level)
             print("Visceral SDR state: ", sdr)
             time.sleep(0.1)
     except KeyboardInterrupt:

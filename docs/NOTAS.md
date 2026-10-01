@@ -230,3 +230,11 @@ Correcto en su totalidad. El comportamiento es exactamente el esperado:
 
 Con esto tienes el flujo completo funcionando de punta a punta: cuerpo simbólico (Fase 1) → codificación sensorial en SDR concatenado (Fase 2) → verificación empírica del comportamiento dinámico tick a tick. Es un hito real del proyecto, no solo otro script suelto.Queda pendiente decidir el siguiente paso: integrar `back_pressure` al mismo flujo (aunque sea con un valor simulado manualmente, ya que no hay sensor real todavía), o avanzar a Fase 3 (memoria temporal con `htm.core`, consumiendo por fin el SDR que hasta ahora solo se calcula e imprime sin propósito posterior). ¿Cuál prefieres?
 LUNES: Decisión anotada. Fase 3 requiere estudiar primero la API de `SpatialPooler` y/o `TemporalMemory` de `htm.core` (el SDR concatenado de 232 bits que ya tienes será su entrada) antes de escribir código — mismo procedimiento que seguiste con `ScalarEncoder`: lee la documentación, tráeme tu resumen de qué parámetros existen y qué entiendes que necesitas configurar, y lo verifico antes de que toques código.
+
+# 2026 10 01 jueves
+
+Se genera el SP para html_pipeline, se declara un circuito de SP con TM en siguiente futuro paso.
+Se implementa un informe de solapamiento y se considera la simulacion plana de un ciclo de diez pasos
+de glucosa y adenosina para medir el procentaje de solapamiento entre patrones espaciales. 
+Se considera a consultar el descoplamiento de los dataclass en una carpeta llamada modelos para 
+importar los modelos y usar KISS/DRY/Responsibility

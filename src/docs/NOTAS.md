@@ -282,3 +282,90 @@ Se renombró datatypes a body_state.py para respetar las convenciones. Pendiente
 El lunes se procede a crear todo el ciclo cognitivo para back_pressure, pensar si es arco independiente o no. Probablemente
 es independiente al ser un sentido externo. Investigar el n.º de sentidos en felinos, complementar con lista
 completa en mamíferos.
+
+# 2026 10 10
+
+# back_pressure integración (arquitectónica)
+
+## Sensor
+
+El sensor de presión recibe un estimulo en una escala de [0 .. 10]
+en ingremento de una unidad por segundo y luego genera un decremento 
+de una unidad de[10 .. 0], eso genera una entrada de datos en el sistema
+de tacto que va de cero presión a máxima y viceversa.
+Mi argumento es usar las herramientas de medición de solapamiento
+para verificar si se generar solapamientos y aprendizajes similares en ambas direcciones de presión. Es una función generadora de presión y devuelve un excalar.
+
+En carpeta datatypes/ creamos el modulo presure.py y es importado al módulo body_state.py pero va a  la dataclass ExteroceptorStateF1
+
+## Encoder
+Tipo escalar porque son un dato por segundo que cambia. No es decimal, textual, ni fecha. Es una función de entrada que recibe un escalar y devuelve un SDR.
+
+## SP
+Recibe un SDR del encoder escalar y codifica el patrón en su columna.
+Después de repasar la documentación y la arquitectura ya hecha, cómo no
+sé que mejor opción tengo, usaré la misma configuración del SP de glucosa. Devuelve un SDR. Aplicar utilidades de solapamiento para calibrado.
+
+## TM
+Recibe un SDR de SP, usa misma propiedad de TM glucosa por mismos motivos. Aplicar utilidades de solapamiento para calibrado.
+
+## Módulo
+Debido a que ya poseo experiencia desarrollando al menos dos arcos similares puedo extrapolar, que no copiar, la arquitectura final desarrollada en los otros dos arcos. Y su objetivo final es dar la decisión de contraer o no una fibra muscular; 1 o 0. Las fibras musculares a nivel de unidad motora son binarias, se activan o no.
+
+## Conclusiones
+
+Debiado a que el sensor de presión en back pressure requiere un correlato 
+propio independiente de adenosine y glucose, entonces archivos como:
+
+- Debido a la clasificación descubierta en Internet pienso que es correcto construir basandonos en la clasificación de tipos de sentidos, eso lleva a que tengamos que reescribir algunos módulos y funciones para hacerlos acordes a ello.
+- Clasificación:
+    - Exterocepción: back_pressure
+    - Viscerocepcion: glucose y adenosine
+    - De momento renombrar esos dos grupos y crear modulos para backpressure nominativa y semanticamente coherentes con esta taxonomía.
+
+## investigación
+Terminao el contrado inicial es buena idea hacer una refactorización de las categorias abstractas para estructurar los sensores del organismo.
+Pense en la clasificación:
+Los sistemas sensoriales se clasifican categóricamente en tres grandes grupos según la procedencia del estímulo. Cada grupo contiene diferentes sentidos y subsentidos (los tipos específicos de energía o cambio que detectan).
+
+Aquí tienes la organización taxonómica completa, incluyendo sus términos en inglés:
+
+## 1. Exterocepción (_Exteroception_)
+
+Detecta estímulos que provienen del exterior del cuerpo.
+
+* Sentidos clásicos (Distales):
+
+  * Visión (_Vision / Sight_): Subsentidos de color, brillo y movimiento.
+  * Audición (_Hearing / Audition_): Subsentidos de tono y volumen.
+  * Olfato (_Smell / Olfaction_): Detección de moléculas químicas volátiles.
+
+* Sentidos de contacto:
+
+  * Gusto (_Taste / Gustation_): Subsentidos dulce, salado, ácido, amargo y umami.
+
+  * Sistema somatosensorial (Tacto) (_Touch / Somatosensation_): Se divide en subsentidos específicos:
+
+    * Mecanorrecepción (_Mechanoreception_): Presión, vibración y textura.
+    * Termorrecepción (_Thermoreception_): Calor y frío externo.
+    * Nocicepción externa (_Nociception_): Dolor superficial o cutáneo.
+
+## 2. Propiocepción (_Proprioception_)
+
+Monitorea la posición, movimiento y equilibrio de las partes del propio cuerpo.
+
+* Sistema vestibular (_Vestibular sense_): Ubicado en el oído interno; detecta el equilibrio, la aceleración y la orientación de la cabeza en el espacio.
+* Sistema kinestésico (_Kinesthesia_): Receptores en músculos, tendones y articulaciones (como los _muscle spindles_ o husos musculares); detectan el esfuerzo, la tensión, el estiramiento y la posición de las extremidades.
+
+## 3. Interocepción / Viscerocepción (_Interoception_)
+
+Monitorea el estado interno de los órganos y los fluidos corporales para mantener la homeostasis.
+
+* Quimiorrecepción interna (_Chemoreception_): Niveles de oxígeno, dióxido de carbono (CO₂) y pH en la sangre.
+* Barorrecepción (_Baroreception_): Presión arterial.
+* Osmorrecepción (_Osmoreception_): Concentración de agua y solutos (sed).
+* Nocicepción visceral (_Visceral nociception_): Dolor de órganos internos (como un dolor de estómago).
+* Termorrecepción central (_Central thermoreception_): Temperatura interna detectada por el hipotálamo.
+
+
+

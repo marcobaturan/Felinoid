@@ -114,3 +114,42 @@ class MotorActuatorsF1:
     alert_reaction: bool  # True if the pressure/pain level triggers an evasive response
 
 ```
+
+## 5. Visceroception
+
+    It monitors the internal state of organs and bodily fluids to maintain homeostasis.
+    
+    * Internal chemoreception (_Chemoreception_): Levels of oxygen, carbon dioxide (CO₂), and pH in the blood.
+      * Baroreception (_Baroreception_): Blood pressure.
+      * Osmoreception: Concentration of water and solutes (thirst).
+      * Visceral nociception: Pain from internal organs (such as a stomachache).
+      * Central thermoreception: Internal temperature detected by the hypothalamus.
+
+## 6. Exteroception
+    Detect external stimuli
+
+    * Distal senses:
+
+      * Vision (_Vision / Sight_): Sub-senses of color, brightness, and movement.
+      * Hearing (_Hearing / Audition_): Sub-senses of pitch and volume.
+      * Smell (_Smell / Olfaction_): Detection of volatile chemical molecules.
+
+    * Touch:
+
+      * Taste (_Taste / Gustation_): Sub-senses of sweet, salty, sour, bitter, and umami.
+
+      * Somatosensory system (Touch) (_Touch / Somatosensation_): Divided into specific sub-senses:
+
+        * Mechanoreception (_Mechanoreception_): Pressure, vibration, and texture.
+        * Thermoreception (_Thermoreception_): External heat and cold.
+        * External nociception (_Nociception_): Superficial or cutaneous pain.
+
+
+## 7. Interoception
+
+    Monitors the position, movement, and balance of one’s own body parts.
+    
+    * Vestibular system (_Vestibular sense_): Located in the inner ear; detects balance, acceleration, and the orientation 
+        of the head in space.
+    * Kinesthetic system (_Kinesthesia_): Receptors in muscles, tendons, and joints (such as _muscle spindles_); 
+      they detect effort, tension, stretching, and the position of the limbs.

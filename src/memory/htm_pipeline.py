@@ -9,7 +9,7 @@ external perceptions.
 from htm.bindings.sdr import SDR
 from htm.algorithms import SpatialPooler as SP
 from htm.algorithms import TemporalMemory as TM
-from perception.VisceralSDR_F1 import VisceralSDRF1
+from src.perception.VisceralSDR_F1 import VisceralSDRF1
 
 
 # variables

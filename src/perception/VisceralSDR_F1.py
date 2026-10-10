@@ -1,8 +1,8 @@
 __doc__="""Converse the input into combined SDR to list of sparse data."""
 
 from htm.bindings.sdr import SDR
-from .adenosine_encoder import encode_adenosine
-from .glucose_encoder import encode_glucose
+from src.perception.visceroception_adenosine_encoder import encode_adenosine
+from src.perception.visceroception_glucose_encoder import encode_glucose
 
 
 def VisceralSDRF1(glucose_value: float, adenosine_value: float) -> list[int]:

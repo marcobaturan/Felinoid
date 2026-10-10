@@ -7,7 +7,7 @@ TODO:
 Eventually we will separate the responsibilities of every type of tools respect the function in order to avoid
 overloaded modules.
 """
-from utils.overlap_utils import overlap_sparse
+from src.utils.overlap_utils import overlap_sparse
 
 def overlap_inform(*SDR_array, w):
     """Overlap inform

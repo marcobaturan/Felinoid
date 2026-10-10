@@ -3,11 +3,11 @@ passing by encoder-> SDR -> SP-> TM to simulate inner state perception and learn
 """
 
 import time
-from datatypes.adenosine import AdenosineState
-from datatypes.body_state import VisceralStateF1
-from datatypes.glucose import GlucoseState
-from memory.htm_pipeline import encode_memory
-from utils.inform_tool import printStateTM
+from src.datatypes.adenosine import AdenosineState
+from src.datatypes.body_state import VisceralStateF1
+from src.datatypes.glucose import GlucoseState
+from src.memory.htm_pipeline import encode_memory
+from src.utils.inform_tool import printStateTM
 
 
 # We instantiate the dataclass with parameterization of the adenosine and glucose states started at their starting values
